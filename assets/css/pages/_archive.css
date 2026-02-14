@@ -1,0 +1,16 @@
+.archive-header,
+.module-head {
+  margin-bottom: var(--space-3);
+}
+
+.blog-layout {
+  margin-top: var(--space-2);
+}
+
+.post-list-grid {
+  gap: var(--space-3);
+}
+
+.post-list-grid .news-card {
+  height: 100%;
+}

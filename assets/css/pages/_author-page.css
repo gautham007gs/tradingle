@@ -1,0 +1,11 @@
+.author-layout .blog-main {
+  min-width: 0;
+}
+
+.author-box .meta {
+  margin-top: var(--space-1);
+}
+
+.author-box {
+  margin-bottom: var(--space-3);
+}

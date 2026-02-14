@@ -1,0 +1,33 @@
+.single-article {
+  width: 100%;
+}
+
+.article-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 760px) 360px;
+  gap: $space-5;
+
+  @include respond(laptop) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.article-body {
+  max-width: 760px;
+  line-height: 1.7;
+}
+
+.article-subtitle {
+  font-size: $fs-small;
+  color: $color-text-muted;
+}
+
+@include respond(mobile) {
+  .article-layout {
+    gap: $space-3;
+  }
+
+  .article-title {
+    font-size: $fs-h2;
+  }
+}

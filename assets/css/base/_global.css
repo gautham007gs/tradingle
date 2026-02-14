@@ -1,0 +1,63 @@
+.module-wrap,
+.article-shell,
+.news-card,
+.widget,
+.ad-slot,
+.market-strip,
+.opinion-card,
+.list-card,
+.mini-list-card {
+  background: var(--color-white);
+  border: var(--border-default);
+  border-radius: var(--card-radius);
+}
+
+.module-wrap,
+.article-shell,
+.market-strip,
+.ad-slot {
+  padding: var(--section-padding);
+  margin-bottom: var(--space-3);
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: var(--fs-meta);
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+
+.meta,
+.meta-line,
+.breadcrumb {
+  font-size: var(--fs-meta);
+  color: var(--color-text-muted);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  left: var(--space-2);
+  top: var(--space-2);
+  width: auto;
+  height: auto;
+  z-index: 2000;
+  background: var(--color-white);
+  color: var(--color-primary);
+  border: var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+}

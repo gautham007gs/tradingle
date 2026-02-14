@@ -1,0 +1,6 @@
+.o-media {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: $space-2;
+  align-items: start;
+}

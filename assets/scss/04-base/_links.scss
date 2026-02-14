@@ -1,0 +1,14 @@
+a {
+  color: inherit;
+  text-decoration: none;
+  @include smooth-hover;
+
+  &:hover,
+  &:focus {
+    color: $color-accent;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}

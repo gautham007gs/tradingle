@@ -1,0 +1,11 @@
+.search-results-grid {
+  margin-top: var(--space-3);
+}
+
+.search-layout .blog-main {
+  min-width: 0;
+}
+
+.search-header {
+  margin-bottom: var(--space-2);
+}

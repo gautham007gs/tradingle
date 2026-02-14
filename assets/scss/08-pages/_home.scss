@@ -1,0 +1,32 @@
+.hero-side-list {
+  display: grid;
+  gap: 20px;
+}
+
+.module-board {
+  margin-block: $space-8;
+
+  @include respond(mobile) {
+    margin-block: $space-5;
+  }
+}
+
+@include respond(mobile) {
+  .hero-card {
+    min-height: 420px;
+  }
+
+  .mini-list-card {
+    grid-template-columns: 96px 1fr;
+    min-height: 112px;
+  }
+
+  .mini-thumb img {
+    width: 96px;
+    height: 96px;
+  }
+}
+
+.home-categories {
+  margin-block: $space-8;
+}

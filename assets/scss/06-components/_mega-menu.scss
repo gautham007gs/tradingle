@@ -1,0 +1,12 @@
+.c-mega-menu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  @include smooth-hover;
+}
+
+.nav-item:hover .c-mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
