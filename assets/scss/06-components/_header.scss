@@ -1,0 +1,16 @@
+.c-header,
+.site-header {
+  height: 80px;
+  background: $color-white;
+  box-shadow: $shadow-soft;
+  position: sticky;
+  top: 0;
+  z-index: $z-header;
+}
+
+.header-inner {
+  min-height: 80px;
+  display: grid;
+  grid-template-columns: 160px minmax(0, 760px) 200px;
+  align-items: center;
+}

@@ -1,0 +1,34 @@
+.card,
+.news-card {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.card:hover,
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+.card-body { padding: var(--space-2); }
+.hero-card { position: relative; min-height: 560px; overflow: hidden; }
+.hero-card .media-link,
+.hero-card .media-link img { width: 100%; height: 100%; object-fit: cover; }
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--space-3);
+  background: linear-gradient(to top, rgba(10,31,51,.9) 45%, transparent);
+  color: #fff;
+}
+.mini-list-card {
+  min-height: 130px;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: var(--space-2);
+  padding: var(--space-1);
+}
+.mini-thumb img { width: 120px; height: 120px; object-fit: cover; }
+.list-card { min-height: 120px; padding: var(--space-2); }

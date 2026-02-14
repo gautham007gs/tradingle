@@ -1,0 +1,5 @@
+.mt-1 { margin-top: var(--space-1); }
+.mt-2 { margin-top: var(--space-2); }
+.mt-3 { margin-top: var(--space-3); }
+.pt-4 { padding-top: var(--space-4); }
+.py-6 { padding-block: var(--space-6); }

@@ -1,0 +1,9 @@
+.module-grid {
+  display: grid;
+  grid-template-columns: 760px 440px;
+  gap: $space-5;
+
+  @include respond(laptop) {
+    grid-template-columns: 1fr;
+  }
+}

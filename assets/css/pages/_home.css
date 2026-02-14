@@ -1,0 +1,14 @@
+.hero-module { padding: 0; border: 0; background: transparent; }
+.module-board { margin-block: var(--space-8); }
+.market-strip { min-height: 72px; }
+.research-block {
+  background: var(--color-secondary);
+  color: #f3f8ff;
+  margin-block: var(--space-7);
+}
+.placeholder-grid .placeholder-card {
+  min-height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

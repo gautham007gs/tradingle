@@ -1,0 +1,14 @@
+.o-grid {
+  display: grid;
+  gap: $space-4;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 740px 1fr;
+  gap: $space-5;
+
+  @include respond(tablet) {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,22 @@
+.site-footer {
+  min-height: 360px;
+  margin-top: var(--space-5);
+  background: var(--color-primary);
+  color: #ebf2fa;
+}
+.footer-grid {
+  padding-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 280px);
+  gap: var(--space-5);
+  justify-content: space-between;
+}
+.footer-bottom {
+  min-height: 48px;
+  margin-top: var(--space-3);
+  border-top: 1px solid rgba(255,255,255,0.16);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
