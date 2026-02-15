@@ -1,0 +1,23 @@
+.c-header,
+.site-header {
+  min-height: 84px;
+  background: $color-white;
+  box-shadow: $shadow-soft;
+  position: sticky;
+  top: 0;
+  z-index: $z-header;
+}
+
+.header-inner {
+  min-height: 92px;
+  display: grid;
+  grid-template-columns: minmax(200px, 280px) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: $space-3;
+}
+
+.site-branding {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}

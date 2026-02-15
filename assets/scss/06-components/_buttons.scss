@@ -1,0 +1,22 @@
+.button,
+.icon-btn,
+.menu-toggle,
+.text-btn,
+.subscribe-btn {
+  border: 1px solid rgba(17, 24, 39, 0.14);
+  border-radius: 12px;
+  padding: 10px 16px;
+  min-height: 44px;
+  background: transparent;
+  @include smooth-hover;
+}
+
+.button-primary,
+.subscribe-btn {
+  background: $color-accent;
+  color: #fff;
+
+  &:hover {
+    background: #169c45;
+  }
+}

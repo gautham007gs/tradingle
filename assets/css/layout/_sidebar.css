@@ -1,0 +1,80 @@
+.site-sidebar .widget {
+  padding: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.sidebar-sticky {
+  position: sticky;
+  top: 96px;
+  display: grid;
+  gap: var(--space-md);
+}
+
+.site-sidebar .widget-title {
+  margin-bottom: var(--space-sm);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--color-primary);
+}
+
+.site-sidebar .widget ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.site-sidebar .widget li a {
+  display: block;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.site-sidebar .widget li a:hover {
+  background: color-mix(in srgb, var(--color-primary) 7%, transparent);
+  color: var(--color-primary);
+}
+
+.site-sidebar .widget-collapsible > button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: var(--border-default);
+  background: transparent;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  padding: 10px 12px;
+  margin-bottom: var(--space-xs);
+}
+
+.site-sidebar .widget-collapsible > ul {
+  max-height: 220px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+
+.site-sidebar .widget ul ul {
+  margin-left: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 1px dashed color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+.site-sidebar .widget li {
+  line-height: 1.45;
+}
+
+.site-sidebar .widget li::before {
+  content: '•';
+  color: color-mix(in srgb, var(--color-accent) 80%, #fff);
+  margin-right: 8px;
+  font-size: 11px;
+}
+
+.site-sidebar .widget li {
+  display: flex;
+  align-items: center;
+}

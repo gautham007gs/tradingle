@@ -1,0 +1,11 @@
+.wrapper,
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding-inline: clamp(var(--space-sm), 3vw, var(--space-lg));
+}
+
+main.site-main {
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-xl);
+}

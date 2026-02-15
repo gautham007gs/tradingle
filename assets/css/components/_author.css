@@ -1,0 +1,50 @@
+.author-box,
+.opinion-author {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.author-box {
+  padding: var(--space-md);
+  border-top: 3px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+}
+
+.author-avatar img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.author-bio {
+  margin: var(--space-xs) 0 var(--space-sm);
+}
+
+.author-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.author-social {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.author-social a {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: var(--border-default);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.author-social a:hover {
+  background: var(--color-primary);
+  color: #fff;
+}

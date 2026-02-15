@@ -1,0 +1,29 @@
+.c-card,
+.news-card {
+  @include card-shell;
+  border: var(--border-default);
+  overflow: hidden;
+  box-shadow: $shadow-soft;
+  @include smooth-hover;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-card;
+  }
+
+  &__content,
+  .card-body {
+    padding: $space-4;
+  }
+
+  &__title {
+    font-size: $fs-h4;
+    line-height: 1.4;
+  }
+
+  &__meta,
+  .meta {
+    font-size: $fs-meta;
+    color: $color-text-muted;
+  }
+}

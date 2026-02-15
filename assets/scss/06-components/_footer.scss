@@ -1,0 +1,20 @@
+.site-footer {
+  margin-top: $space-7;
+  background: linear-gradient(180deg, #0c2239 0%, #0a1d31 100%);
+  color: #ecf2fb;
+  overflow: hidden;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: $space-4;
+
+  @include respond(tablet) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+  }
+}

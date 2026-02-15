@@ -1,0 +1,143 @@
+.hero-module {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.hero-module,
+.market-strip,
+.newsletter-wrap,
+.research-block,
+.module-board,
+.home-custom-widget {
+  border-radius: var(--card-radius);
+}
+
+.hero-premium {
+  position: relative;
+}
+
+.hero-premium__intro {
+  margin-bottom: var(--space-md);
+}
+
+.hero-premium__kicker {
+  margin: 0 0 var(--space-xs);
+  color: var(--color-accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: var(--fs-meta);
+}
+
+.hero-premium .hero-grid {
+  align-items: start;
+}
+
+.hero-premium__side {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.hero-premium__editors,
+.hero-premium__highlights {
+  padding: var(--space-md);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-primary) 2%, var(--color-white));
+}
+
+.hero-card {
+  min-height: 640px;
+}
+
+.module-board {
+  margin-block: var(--space-2xl);
+}
+
+.market-strip {
+  min-height: 72px;
+  padding: var(--space-2) var(--space-3);
+}
+
+.research-block {
+  background: var(--color-secondary);
+  color: #f3f8ff;
+  margin-block: var(--space-2xl);
+}
+
+.placeholder-grid .placeholder-card {
+  min-height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-categories {
+  margin-block: var(--space-2xl);
+}
+
+.home-categories .module-board--insert {
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+  background: var(--color-white);
+}
+
+@media (max-width: 768px) {
+  .module-board {
+    margin-block: var(--space-5);
+  }
+
+  .hero-card {
+    min-height: 420px;
+  }
+
+  .mini-list-card {
+    grid-template-columns: 96px 1fr;
+    min-height: 112px;
+  }
+
+  .mini-thumb img {
+    width: 96px;
+    height: 96px;
+  }
+}
+
+
+.data-visual-wrap .module-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.data-visual-grid {
+  align-items: stretch;
+}
+
+.data-visual-card {
+  min-height: 220px;
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-1);
+  box-shadow: var(--shadow-soft);
+  padding: var(--space-md);
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.data-visual-card__eyebrow {
+  font-size: var(--fs-meta);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.cards-grid .news-card,
+.related-grid .news-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}

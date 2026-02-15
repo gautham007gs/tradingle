@@ -1,0 +1,21 @@
+.hero-side-list {
+  display: grid;
+  gap: $space-3;
+}
+
+.module-board {
+  margin-block: $space-7;
+
+  @include respond(mobile) {
+    margin-block: $space-5;
+  }
+}
+
+.home-categories {
+  margin-block: $space-7;
+}
+
+.data-visual-card {
+  min-height: 220px;
+  padding: $space-3;
+}

@@ -1,0 +1,25 @@
+.o-grid {
+  display: grid;
+  gap: $space-4;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 720px) minmax(280px, 320px);
+  gap: $space-6;
+  align-items: start;
+
+  @include respond(tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 720px) 1fr;
+  gap: $space-6;
+
+  @include respond(tablet) {
+    grid-template-columns: 1fr;
+  }
+}

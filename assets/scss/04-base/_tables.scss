@@ -1,0 +1,10 @@
+.entry-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.entry-content th,
+.entry-content td {
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  padding: $space-1;
+}

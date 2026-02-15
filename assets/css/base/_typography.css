@@ -1,0 +1,71 @@
+body {
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: var(--color-text-dark);
+  background: radial-gradient(circle at 50% -20%, color-mix(in srgb, var(--color-primary) 5%, var(--color-bg-light)), var(--color-bg-light) 40%);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.heading-xl { font-size: var(--fs-h1); line-height: 1.12; letter-spacing: -0.035em; margin-bottom: var(--space-sm); color: var(--color-primary); }
+.heading-lg { font-size: var(--fs-h2); line-height: 1.18; letter-spacing: -0.028em; margin-bottom: var(--space-sm); color: var(--color-primary); }
+.heading-md { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.02em; color: var(--color-primary); }
+.heading-sm { font-size: var(--fs-h4); line-height: 1.3; letter-spacing: -0.012em; color: var(--color-primary); }
+.text-small { font-size: var(--fs-small); }
+.text-meta,
+.meta,
+.meta-line,
+.breadcrumb { font-size: var(--fs-meta); color: color-mix(in srgb, var(--color-text-muted) 85%, var(--color-primary)); font-weight: 500; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-headings);
+  color: var(--color-text-dark);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+p {
+  margin-bottom: var(--space-md);
+}
+
+.entry-content > p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--font-headings);
+  font-size: 2.5em;
+  line-height: 0.95;
+  margin: 0.08em 0.12em 0 0;
+  color: var(--color-primary);
+}
+
+a { color: inherit; text-decoration: none; transition: var(--transition-default); }
+
+a:not(.button):not(.button-primary):not(.subscribe-btn):not(.menu-toggle):not(.icon-btn):not(.text-btn) {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: color .25s ease, background-size .25s ease;
+}
+
+a:hover,
+a:focus { color: var(--color-accent); }
+
+a:not(.button):not(.button-primary):not(.subscribe-btn):not(.menu-toggle):not(.icon-btn):not(.text-btn):hover {
+  background-size: 100% 1px;
+}
+
+
+ul,
+ol {
+  margin: 0 0 var(--space-md) var(--space-md);
+}
+
+li + li {
+  margin-top: 6px;
+}

@@ -1,0 +1,9 @@
+.newsletter-wrap {
+  max-width: 920px;
+  margin-inline: auto;
+
+  &--premium {
+    padding: $space-6;
+    border: 1px solid $color-border;
+  }
+}
