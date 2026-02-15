@@ -1,0 +1,11 @@
+.author-box,
+.opinion-author {
+  display: flex;
+  gap: $space-3;
+  align-items: flex-start;
+}
+
+.author-social {
+  display: flex;
+  gap: $space-1;
+}

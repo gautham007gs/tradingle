@@ -1,0 +1,32 @@
+.button,
+.button-primary,
+.wp-element-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  min-height: 42px;
+  padding: 0 18px;
+  font-weight: 600;
+  line-height: 1;
+  transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease;
+}
+
+.button-primary,
+.wp-element-button,
+.subscribe-btn {
+  background: linear-gradient(135deg, var(--primary-accent), #159a45);
+  color: #fff;
+}
+.button-primary:hover,
+.wp-element-button:hover,
+.subscribe-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+  color: #fff;
+}
+
+.button { background: var(--bg-white); border-color: var(--border-color); color: var(--text-dark); }
+.icon-btn { width: 42px; padding: 0; }

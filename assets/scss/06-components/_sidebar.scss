@@ -1,0 +1,13 @@
+.sidebar-sticky {
+  position: sticky;
+  top: 96px;
+}
+
+.site-sidebar .widget {
+  margin-bottom: $space-4;
+}
+
+.site-sidebar .widget ul ul {
+  margin-left: $space-2;
+  padding-left: $space-2;
+}

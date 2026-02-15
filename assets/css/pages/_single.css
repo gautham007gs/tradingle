@@ -1,0 +1,34 @@
+.single-article { margin-top: var(--space-md); }
+.article-title { max-width: 24ch; overflow-wrap: anywhere; }
+.article-featured-image {
+  margin: var(--space-md) 0 var(--space-lg);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+.article-featured-image figcaption { font-size: .84rem; color: var(--text-muted); padding: 8px 2px; }
+.article-body { max-width: 68ch; line-height: 1.74; }
+.article-body > * { margin-bottom: var(--space-md); }
+.article-body .wp-block-table table,
+.article-body table { width: 100%; border-collapse: collapse; }
+.article-body th { background: #edf3fb; }
+.article-body th,
+.article-body td { border: 1px solid var(--border-color); padding: 10px 12px; }
+.article-body tr:nth-child(even) td { background: #f8fbff; }
+.article-body blockquote {
+  border-left: 4px solid var(--secondary-accent);
+  background: #f3f8ff;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.article-body ul,
+.article-body ol { padding-left: 1.35rem; }
+.article-body li { margin-bottom: 8px; }
+
+.comments-area { border-top: 1px solid var(--border-color); padding-top: var(--space-md); }
+.comment-list { list-style: none; padding: 0; display: grid; gap: var(--space-sm); }
+.comment-list .comment-body { padding: var(--space-sm); border: 1px solid var(--border-color); border-radius: var(--radius-sm); background: var(--bg-white); }
+
+@media (max-width: 1024px) {
+  .article-body { max-width: none; }
+}

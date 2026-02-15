@@ -1,0 +1,18 @@
+.newsletter-wrap {
+  border-radius: var(--radius-lg);
+  background: linear-gradient(140deg, #0d243a, #18456e);
+  color: #f4f8fc;
+  padding: var(--space-xl);
+  text-align: center;
+}
+.newsletter-wrap h2,
+.newsletter-wrap p,
+.newsletter-wrap .meta { color: #f4f8fc; }
+.newsletter-form {
+  margin: var(--space-md) auto var(--space-sm);
+  max-width: 720px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-sm);
+}
+.newsletter-form input { min-height: 48px; background: rgba(255,255,255,.96); }

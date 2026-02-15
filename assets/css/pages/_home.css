@@ -1,0 +1,54 @@
+.section-hero .hero-layout__featured,
+.section-hero .hero-layout__stack { min-width: 0; }
+
+.section-market-overview { margin-top: calc(var(--space-md) * -1); }
+.section-market-overview .container,
+.section-latest-news .container,
+.section-analyst-picks .container,
+.section-explore-categories .container,
+.section-podcast .container,
+.section-tools .container,
+.section-cta-newsletter .container,
+.section-highlight .container { width: min(var(--container-width), calc(100% - 2 * var(--space-sm))); }
+
+.explore-card,
+.tool-card { padding: var(--space-md); }
+.explore-card__icon {
+  width: 30px; height: 30px; border-radius: 8px;
+  background: rgba(47,123,217,.12); color: var(--secondary-accent);
+  display: grid; place-items: center; margin-bottom: var(--space-sm);
+}
+
+@media (max-width: 1200px) {
+  .metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1024px) {
+  .hero-layout,
+  .card--featured-highlight,
+  .cards-grid,
+  .analyst-picks-grid,
+  .explore-grid,
+  .podcast-grid,
+  .tools-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero-card { min-height: 430px; }
+}
+
+@media (max-width: 767px) {
+  .hero-layout,
+  .cards-grid,
+  .analyst-picks-grid,
+  .explore-grid,
+  .podcast-grid,
+  .tools-grid,
+  .metric-grid,
+  .newsletter-form,
+  .card--featured-highlight {
+    grid-template-columns: 1fr;
+  }
+  .mini-list-card { grid-template-columns: 88px 1fr; }
+  .hero-card { min-height: 340px; }
+  .card-overlay { padding: var(--space-md); }
+}

@@ -1,0 +1,7 @@
+.author-profile {
+  padding: var(--space-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-white);
+  margin-bottom: var(--space-lg);
+}

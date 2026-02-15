@@ -1,0 +1,18 @@
+.c-nav,
+.primary-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-3;
+  list-style: none;
+}
+
+.primary-menu a {
+  font-weight: 600;
+  color: $color-primary;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    border-color: $color-accent;
+  }
+}

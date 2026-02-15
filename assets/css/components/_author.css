@@ -1,0 +1,21 @@
+.author-box {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-white);
+}
+.author-avatar img { width: 96px; height: 96px; border-radius: 50%; }
+.author-links { display: flex; gap: var(--space-sm); align-items: center; flex-wrap: wrap; }
+.author-social { display: inline-flex; gap: 8px; }
+.author-social a {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: .72rem;
+}

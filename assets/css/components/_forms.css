@@ -1,0 +1,19 @@
+input[type='text'],
+input[type='email'],
+input[type='search'],
+textarea {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  min-height: 46px;
+  padding: 0 14px;
+  background: var(--bg-white);
+  color: var(--text-dark);
+}
+textarea { min-height: 140px; padding-top: 12px; }
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--secondary-accent);
+  box-shadow: 0 0 0 3px rgba(47,123,217,.16);
+}

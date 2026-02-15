@@ -1,0 +1,17 @@
+.c-ticker,
+.breaking-bar {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  background: $color-primary;
+  color: #f8fafc;
+}
+
+.ticker-track {
+  animation: ticker-scroll 36s linear infinite;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

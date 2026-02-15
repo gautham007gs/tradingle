@@ -1,0 +1,29 @@
+.c-hero {
+  margin-bottom: $space-8;
+}
+
+.hero-premium {
+  &__intro {
+    margin-bottom: $space-3;
+  }
+
+  &__kicker {
+    margin: 0 0 $space-1;
+    color: $color-accent;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+
+  &__side {
+    display: grid;
+    gap: $space-3;
+  }
+
+  &__editors,
+  &__highlights {
+    padding: $space-3;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+  }
+}

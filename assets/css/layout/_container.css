@@ -1,0 +1,17 @@
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, var(--content-width)) minmax(0, var(--sidebar-width));
+  gap: var(--layout-gap);
+  align-items: start;
+}
+
+.blog-main,
+.article-main {
+  min-width: 0;
+}
+
+.article-layout {
+  display: grid;
+  grid-template-columns: minmax(0, var(--content-width)) minmax(0, 280px);
+  gap: var(--layout-gap);
+}

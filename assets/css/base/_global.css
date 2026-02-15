@@ -1,0 +1,55 @@
+body {
+  background: radial-gradient(circle at 10% 10%, #ffffff 0%, var(--bg-light) 45%, #eef3f9 100%);
+  -webkit-font-smoothing: antialiased;
+}
+
+.site-main {
+  padding-bottom: var(--space-2xl);
+}
+
+.home .site-main { padding-top: var(--space-lg); }
+
+.home-section,
+.module-wrap {
+  margin-bottom: var(--space-2xl);
+}
+
+.container,
+.wrapper {
+  width: min(var(--container-width), calc(100% - 2 * var(--space-sm)));
+  margin-inline: auto;
+}
+
+.section-head {
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.card,
+.news-card,
+.tool-card,
+.explore-card,
+.widget {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-white);
+  box-shadow: var(--shadow-soft);
+}
+
+.screen-reader-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.back-to-top{position:fixed;right:20px;bottom:20px;width:42px;height:42px;border-radius:999px;border:0;background:var(--primary-dark);color:#fff;opacity:0;pointer-events:none;transition:.25s}.back-to-top.show{opacity:1;pointer-events:auto}
+
+html{scroll-behavior:smooth} a:not(.button):not(.button-primary):not(.subscribe-btn){background-image:linear-gradient(currentColor,currentColor);background-size:0 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .25s ease} a:not(.button):not(.button-primary):not(.subscribe-btn):hover{background-size:100% 1px}

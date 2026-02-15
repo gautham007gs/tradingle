@@ -1,0 +1,31 @@
+.article-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 720px) minmax(280px, 320px);
+  gap: $space-6;
+
+  @include respond(laptop) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.entry-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: $space-3 0;
+}
+
+.entry-content tbody tr:nth-child(even) {
+  background: rgba(15, 39, 66, 0.04);
+}
+
+.entry-content blockquote {
+  border-left: 4px solid $color-accent;
+  background: rgba(23, 143, 99, 0.08);
+  padding: $space-3;
+  border-radius: $radius-sm;
+}
+
+.article-title {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}

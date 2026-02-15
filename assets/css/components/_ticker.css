@@ -1,0 +1,29 @@
+.ticker-inline {
+  background: #0f2740;
+  border-radius: var(--radius-md);
+  color: #dbe8f6;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 10px var(--space-sm);
+  overflow: hidden;
+}
+.ticker-label {
+  font-size: .75rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #a4ffcb;
+}
+.ticker-window { overflow: hidden; flex: 1; }
+.ticker-track {
+  display: flex;
+  gap: var(--space-lg);
+  width: max-content;
+  animation: tradingleTicker 28s linear infinite;
+}
+.ticker-track a { color: #e8f1fb; white-space: nowrap; font-size: .9rem; }
+
+@keyframes tradingleTicker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

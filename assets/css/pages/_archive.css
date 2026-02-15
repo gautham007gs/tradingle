@@ -1,0 +1,8 @@
+.archive-header { margin-top: var(--space-sm); }
+.archive-header .module-title { margin-bottom: 6px; }
+.post-list-grid { display: grid; gap: var(--space-md); }
+
+.blog-layout-list .post-list-grid,
+.blog-layout-list .cards-grid-2,
+body.blog-layout-list .post-list-grid,
+body.blog-layout-list .cards-grid-2 { grid-template-columns: 1fr; }

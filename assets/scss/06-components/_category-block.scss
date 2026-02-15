@@ -1,0 +1,38 @@
+.module-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 760px) minmax(0, 1fr);
+  gap: $space-6;
+
+  @include respond(laptop) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.home-categories {
+  .module-board--insert {
+    padding: $space-5;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-white;
+  }
+
+  &--feature-side-stack {
+    .module-grid {
+      grid-template-columns: 2fr 1fr;
+
+      @include respond(laptop) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  &--two-boxes {
+    .module-grid {
+      grid-template-columns: 1fr 1fr;
+
+      @include respond(laptop) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

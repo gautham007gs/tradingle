@@ -1,0 +1,72 @@
+@import '01-settings/colors';
+@import '01-settings/typography';
+@import '01-settings/spacing';
+@import '01-settings/radius';
+@import '01-settings/shadows';
+@import '01-settings/breakpoints';
+@import '01-settings/zindex';
+
+@import '02-tools/functions';
+@import '02-tools/mixins';
+@import '02-tools/media';
+@import '02-tools/animations';
+
+@import '03-generic/reset';
+@import '03-generic/normalize';
+
+@import '04-base/body';
+@import '04-base/headings';
+@import '04-base/links';
+@import '04-base/lists';
+@import '04-base/tables';
+@import '04-base/forms';
+
+@import '05-objects/container';
+@import '05-objects/grid';
+@import '05-objects/media-object';
+@import '05-objects/section';
+@import '05-objects/flex';
+
+@import '06-components/header';
+@import '06-components/nav';
+@import '06-components/mega-menu';
+@import '06-components/ticker';
+@import '06-components/hero';
+@import '06-components/card';
+@import '06-components/category-block';
+@import '06-components/research';
+@import '06-components/data-grid';
+@import '06-components/opinion';
+@import '06-components/buttons';
+@import '06-components/badges';
+@import '06-components/newsletter';
+@import '06-components/author';
+@import '06-components/sidebar';
+@import '06-components/breadcrumb';
+@import '06-components/pagination';
+@import '06-components/ads';
+@import '06-components/footer';
+
+@import '07-utilities/spacing-utils';
+@import '07-utilities/display-utils';
+@import '07-utilities/text-utils';
+@import '07-utilities/visibility-utils';
+
+@import '08-pages/home';
+@import '08-pages/single';
+@import '08-pages/archive';
+@import '08-pages/search';
+@import '08-pages/author-page';
+
+[data-theme='dark'] {
+  background: #0e1621;
+  color: #f3f4f6;
+
+  .c-card,
+  .news-card,
+  .module-wrap,
+  .article-shell {
+    background: #111827;
+    border-color: #263345;
+  }
+}
