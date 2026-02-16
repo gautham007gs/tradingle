@@ -7,7 +7,7 @@
 
 get_header();
 ?>
-<div class="content-grid blog-layout">
+<div class="blog-layout wrapper">
 	<section class="blog-main">
 		<?php if ( have_posts() ) : ?>
 			<div class="post-list-grid cards-grid cards-grid-2">
@@ -20,7 +20,7 @@ get_header();
 			<p><?php esc_html_e( 'No articles found.', 'tradingle' ); ?></p>
 		<?php endif; ?>
 	</section>
-	<?php get_sidebar(); ?>
 </div>
+<?php get_template_part( 'template-parts/content/post', 'collections' ); ?>
 <?php
 get_footer();

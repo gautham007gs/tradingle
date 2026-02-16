@@ -121,14 +121,9 @@ get_header();
 					<?php comments_template(); ?>
 				</section>
 			</div>
-
-			<aside class="article-sidebar" role="complementary">
-				<?php if ( is_active_sidebar( 'article-sidebar' ) ) : ?>
-					<div class="sidebar-sticky"><?php dynamic_sidebar( 'article-sidebar' ); ?></div>
-				<?php else : ?>
-					<?php get_sidebar(); ?>
-				<?php endif; ?>
-			</aside>
+		</div>
+		<div class="wrapper">
+			<?php get_template_part( 'template-parts/content/post', 'collections' ); ?>
 		</div>
 	<?php endwhile; ?>
 </section>

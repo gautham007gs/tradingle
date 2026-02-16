@@ -14,35 +14,7 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <a class="skip-link" href="#primary"><?php esc_html_e( 'Skip to content', 'tradingle' ); ?></a>
-<?php if ( get_theme_mod( 'tradingle_show_top_bar', 1 ) ) : ?>
-<div class="utility-bar">
-	<div class="wrapper utility-inner">
-		<div class="utility-left">
-			<?php if ( is_active_sidebar( 'utility-left' ) ) : ?>
-				<?php dynamic_sidebar( 'utility-left' ); ?>
-			<?php else : ?>
-				<span class="utility-pill"><?php echo esc_html( gmdate( 'D, d M Y' ) ); ?></span>
-				<span><?php esc_html_e( 'Global Markets', 'tradingle' ); ?></span>
-			<?php endif; ?>
-		</div>
-		<div class="utility-right">
-			<?php if ( is_active_sidebar( 'utility-right' ) ) : ?>
-				<?php dynamic_sidebar( 'utility-right' ); ?>
-			<?php else : ?>
-				<span><?php esc_html_e( 'Live TV', 'tradingle' ); ?></span>
-				<span><?php esc_html_e( 'Research', 'tradingle' ); ?></span>
-			<?php endif; ?>
-		</div>
-	</div>
-</div>
-<?php endif; ?>
-<?php if ( get_theme_mod( 'tradingle_show_breaking_bar', 1 ) && is_active_sidebar( 'header-breaking' ) ) : ?>
-	<div class="breaking-bar">
-		<div class="wrapper">
-			<?php dynamic_sidebar( 'header-breaking' ); ?>
-		</div>
-	</div>
-<?php endif; ?>
+
 <header class="site-header" itemscope itemtype="https://schema.org/WPHeader">
 	<div class="wrapper header-inner">
 		<div class="site-branding">
@@ -57,10 +29,10 @@
 			<div class="site-branding__text">
 				<?php if ( has_custom_logo() ) { the_custom_logo(); } ?>
 				<a class="site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
-				<span class="site-tagline"><?php esc_html_e( 'Financial Intelligence', 'tradingle' ); ?></span>
 			</div>
 		</div>
-		<nav class="main-navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+
+		<nav class="main-navigation" itemscope itemtype="https://schema.org/SiteNavigationElement" aria-label="<?php esc_attr_e( 'Primary Navigation', 'tradingle' ); ?>">
 			<?php
 			wp_nav_menu(
 				array(
@@ -70,18 +42,24 @@
 				)
 			);
 			?>
+			<a class="menu-subscribe button-primary" href="#newsletter-signup"><?php echo esc_html( get_theme_mod( 'tradingle_subscribe_text', __( 'Subscribe', 'tradingle' ) ) ); ?></a>
 		</nav>
+
 		<div class="header-actions">
-			<button class="icon-btn button search-btn" type="button" aria-label="<?php esc_attr_e( 'Open search', 'tradingle' ); ?>">⌕</button>
+			<button class="icon-btn button search-btn" type="button" aria-label="<?php esc_attr_e( 'Open search', 'tradingle' ); ?>" aria-expanded="false">⌕</button>
 			<a class="subscribe-btn button-primary" href="#newsletter-signup"><?php echo esc_html( get_theme_mod( 'tradingle_subscribe_text', __( 'Subscribe', 'tradingle' ) ) ); ?></a>
 			<button class="menu-toggle button" type="button" aria-label="<?php esc_attr_e( 'Toggle menu', 'tradingle' ); ?>" aria-expanded="false">☰</button>
 		</div>
 	</div>
+	<div class="wrapper header-search" hidden>
+		<?php get_search_form(); ?>
+	</div>
 </header>
+
 <?php if ( is_active_sidebar( 'header-ad' ) ) : ?>
 	<div class="wrapper module-wrap ad-wrap">
 		<?php dynamic_sidebar( 'header-ad' ); ?>
 	</div>
 <?php endif; ?>
+
 <main id="primary" class="site-main">
-	<?php tradingle_breadcrumb(); ?>
