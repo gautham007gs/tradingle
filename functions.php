@@ -296,6 +296,36 @@ function tradingle_reading_time( $post_id = 0 ) {
 	return sprintf( _n( '%s min read', '%s mins read', $minutes, 'tradingle' ), number_format_i18n( $minutes ) );
 }
 
+/**
+ * Lightweight homepage dedupe: track posts already rendered in modules.
+ *
+ * This prevents the same post repeating across hero/newsroom/topic boards.
+ *
+ * @return int[]
+ */
+function tradingle_seen_posts_get() {
+	$seen = isset( $GLOBALS['tradingle_seen_posts'] ) ? $GLOBALS['tradingle_seen_posts'] : array();
+	if ( ! is_array( $seen ) ) {
+		$seen = array();
+	}
+
+	return array_values( array_unique( array_map( 'absint', $seen ) ) );
+}
+
+/**
+ * Add posts to seen list.
+ *
+ * @param int[] $ids Post IDs.
+ * @return void
+ */
+function tradingle_seen_posts_add( $ids ) {
+	$ids = is_array( $ids ) ? $ids : array( $ids );
+	$ids = array_filter( array_map( 'absint', $ids ) );
+
+	$current = tradingle_seen_posts_get();
+	$GLOBALS['tradingle_seen_posts'] = array_values( array_unique( array_merge( $current, $ids ) ) );
+}
+
 function tradingle_breadcrumb() {
 	if ( is_front_page() ) {
 		return;
@@ -410,6 +440,57 @@ function tradingle_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'tradingle_pingback_header' );
+
+/**
+ * Output site-level JSON-LD schema for SEO.
+ *
+ * Adds WebSite + Organization. (Articles already output NewsArticle schema.)
+ */
+function tradingle_site_schema() {
+	$site_name = get_bloginfo( 'name' );
+	$site_desc = get_bloginfo( 'description' );
+	$site_url  = home_url( '/' );
+
+	$same_as = array_filter(
+		array(
+			get_theme_mod( 'tradingle_footer_x_url', '' ),
+			get_theme_mod( 'tradingle_footer_linkedin_url', '' ),
+			get_theme_mod( 'tradingle_footer_youtube_url', '' ),
+			get_theme_mod( 'tradingle_footer_instagram_url', '' ),
+		)
+	);
+
+	$schema = array(
+		'@context' => 'https://schema.org',
+		'@graph'   => array(
+			array(
+				'@type' => 'Organization',
+				'@id'   => trailingslashit( $site_url ) . '#organization',
+				'name'  => $site_name,
+				'url'   => $site_url,
+				'sameAs' => array_values( $same_as ),
+			),
+			array(
+				'@type' => 'WebSite',
+				'@id'   => trailingslashit( $site_url ) . '#website',
+				'url'   => $site_url,
+				'name'  => $site_name,
+				'description' => $site_desc,
+				'publisher' => array(
+					'@id' => trailingslashit( $site_url ) . '#organization',
+				),
+				'potentialAction' => array(
+					'@type'       => 'SearchAction',
+					'target'      => add_query_arg( 's', '{search_term_string}', $site_url ),
+					'query-input' => 'required name=search_term_string',
+				),
+			),
+		),
+	);
+
+	echo '<script type="application/ld+json">' . wp_json_encode( $schema ) . '</script>';
+}
+add_action( 'wp_head', 'tradingle_site_schema', 34 );
 
 /**
  * Handle newsletter subscribe form submissions.

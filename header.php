@@ -15,6 +15,35 @@
 <?php wp_body_open(); ?>
 <a class="skip-link" href="#primary"><?php esc_html_e( 'Skip to content', 'tradingle' ); ?></a>
 
+<?php if ( get_theme_mod( 'tradingle_show_top_bar', 1 ) ) : ?>
+	<div class="utility-bar" role="region" aria-label="<?php esc_attr_e( 'Site utility bar', 'tradingle' ); ?>">
+		<div class="wrapper utility-inner">
+			<div class="utility-left">
+				<?php if ( is_active_sidebar( 'utility-left' ) ) : ?>
+					<?php dynamic_sidebar( 'utility-left' ); ?>
+				<?php else : ?>
+					<span class="utility-meta"><?php echo esc_html( gmdate( 'D, M j' ) ); ?></span>
+				<?php endif; ?>
+			</div>
+			<div class="utility-center">
+				<span class="utility-pill"><?php esc_html_e( 'Market', 'tradingle' ); ?></span>
+				<a class="utility-link" href="<?php echo esc_url( home_url( '/category/markets/' ) ); ?>"><?php esc_html_e( 'Markets', 'tradingle' ); ?></a>
+				<span class="utility-sep" aria-hidden="true">·</span>
+				<a class="utility-link" href="<?php echo esc_url( home_url( '/category/analysis/' ) ); ?>"><?php esc_html_e( 'Analysis', 'tradingle' ); ?></a>
+				<span class="utility-sep" aria-hidden="true">·</span>
+				<a class="utility-link" href="<?php echo esc_url( home_url( '/category/research/' ) ); ?>"><?php esc_html_e( 'Research', 'tradingle' ); ?></a>
+			</div>
+			<div class="utility-right">
+				<?php if ( is_active_sidebar( 'utility-right' ) ) : ?>
+					<?php dynamic_sidebar( 'utility-right' ); ?>
+				<?php else : ?>
+					<a class="utility-link" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Contact', 'tradingle' ); ?></a>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+<?php endif; ?>
+
 <header class="site-header" itemscope itemtype="https://schema.org/WPHeader">
 	<div class="wrapper header-inner">
 		<div class="site-branding">
@@ -46,6 +75,9 @@
 		</nav>
 
 		<div class="header-actions">
+			<a class="subscribe-btn button button-primary" href="<?php echo esc_url( home_url( '/#newsletter-signup' ) ); ?>">
+				<?php echo esc_html( get_theme_mod( 'tradingle_subscribe_text', __( 'Subscribe', 'tradingle' ) ) ); ?>
+			</a>
 			<button class="icon-btn button search-btn" type="button" aria-label="<?php esc_attr_e( 'Open search', 'tradingle' ); ?>" aria-expanded="false">⌕</button>
 			<button class="menu-toggle button" type="button" aria-label="<?php esc_attr_e( 'Toggle menu', 'tradingle' ); ?>" aria-expanded="false">☰</button>
 		</div>

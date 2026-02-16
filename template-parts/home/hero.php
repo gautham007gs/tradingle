@@ -25,6 +25,9 @@ if ( ! $side_posts->have_posts() ) {
 		)
 	);
 }
+
+$side_ids = wp_list_pluck( $side_posts->posts, 'ID' );
+tradingle_seen_posts_add( array_merge( $featured_ids, $side_ids ) );
 ?>
 <section class="home-section section-hero">
 	<div class="container hero-layout">
@@ -44,7 +47,7 @@ if ( ! $side_posts->have_posts() ) {
 						</a>
 						<div class="card-overlay">
 							<span class="category-pill category-pill--<?php echo esc_attr( $hero_slug ); ?>"><?php echo esc_html( $hero_name ); ?></span>
-							<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+							<h2 class="hero-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 							<p><?php echo esc_html( wp_trim_words( get_the_excerpt(), 24 ) ); ?></p>
 							<p class="meta"><?php the_author(); ?> · <?php echo esc_html( get_the_date( 'M j, Y' ) ); ?></p>
 						</div>

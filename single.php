@@ -71,14 +71,36 @@ get_header();
 				</article>
 
 				<section class="author-box module-wrap" itemscope itemtype="https://schema.org/Person">
+					<?php
+					$author_id       = get_the_author_meta( 'ID' );
+					$author_bio      = get_the_author_meta( 'description', $author_id );
+					$author_website  = get_the_author_meta( 'user_url', $author_id );
+					$author_x        = get_the_author_meta( 'twitter', $author_id );
+					$author_linkedin = get_the_author_meta( 'linkedin', $author_id );
+					?>
 					<div class="author-avatar">
-						<?php echo get_avatar( get_the_author_meta( 'ID' ), 64 ); ?>
+						<?php echo get_avatar( $author_id, 72 ); ?>
 					</div>
 					<div class="author-info">
-						<h3 itemprop="name"><?php the_author(); ?></h3>
-						<p class="author-bio" itemprop="description"><?php echo esc_html( wp_trim_words( get_the_author_meta( 'description' ), 28 ) ); ?></p>
+						<h3 class="author-name" itemprop="name"><?php the_author(); ?></h3>
+						<?php if ( $author_bio ) : ?>
+							<p class="author-bio" itemprop="description"><?php echo esc_html( wp_trim_words( $author_bio, 32 ) ); ?></p>
+						<?php endif; ?>
 						<div class="author-links">
-							<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><?php esc_html_e( 'View all posts', 'tradingle' ); ?></a>
+							<a href="<?php echo esc_url( get_author_posts_url( $author_id ) ); ?>"><?php esc_html_e( 'View all posts', 'tradingle' ); ?></a>
+							<?php if ( $author_website ) : ?>
+								<a href="<?php echo esc_url( $author_website ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Website', 'tradingle' ); ?></a>
+							<?php endif; ?>
+							<?php if ( $author_x || $author_linkedin ) : ?>
+								<div class="author-social">
+									<?php if ( $author_x ) : ?>
+										<a href="<?php echo esc_url( $author_x ); ?>" target="_blank" rel="noopener noreferrer">X</a>
+									<?php endif; ?>
+									<?php if ( $author_linkedin ) : ?>
+										<a href="<?php echo esc_url( $author_linkedin ); ?>" target="_blank" rel="noopener noreferrer">in</a>
+									<?php endif; ?>
+								</div>
+							<?php endif; ?>
 						</div>
 					</div>
 				</section>
@@ -88,22 +110,40 @@ get_header();
 					<div class="related-grid cards-grid cards-grid-3">
 						<?php
 						$categories = wp_get_post_categories( get_the_ID() );
-						$related    = new WP_Query(
-							array(
-								'category__in'   => $categories,
-								'post__not_in'   => array( get_the_ID() ),
-								'posts_per_page' => 3,
-							)
+						$related_args = array(
+							'post__not_in'   => array( get_the_ID() ),
+							'posts_per_page' => 3,
 						);
+
+						if ( ! empty( $categories ) ) {
+							$related_args['category__in'] = $categories;
+						}
+
+						$related = new WP_Query( $related_args );
+
+						// Fallback: if no category-based related posts, show latest you-may-like posts.
+						if ( ! $related->have_posts() ) {
+							wp_reset_postdata();
+							$related = new WP_Query(
+								array(
+									'posts_per_page'      => 3,
+									'post__not_in'        => array( get_the_ID() ),
+									'ignore_sticky_posts' => true,
+								)
+							);
+						}
 						?>
-						<?php while ( $related->have_posts() ) : $related->the_post(); ?>
-							<article class="related-card news-card">
-								<a href="<?php the_permalink(); ?>">
-									<?php the_post_thumbnail( 'medium', array( 'loading' => 'lazy' ) ); ?>
-									<div class="card-body"><h3 class="heading-sm"><?php the_title(); ?></h3></div>
-								</a>
-							</article>
-						<?php endwhile; wp_reset_postdata(); ?>
+						<?php if ( $related->have_posts() ) : ?>
+							<?php
+							while ( $related->have_posts() ) :
+								$related->the_post();
+								get_template_part( 'template-parts/content/card', 'standard' );
+							endwhile;
+							wp_reset_postdata();
+							?>
+						<?php else : ?>
+							<p class="meta"><?php esc_html_e( 'No related articles available yet.', 'tradingle' ); ?></p>
+						<?php endif; ?>
 					</div>
 				</section>
 
@@ -116,6 +156,8 @@ get_header();
 					<p><?php esc_html_e( 'Get our top market briefings and analysis delivered daily.', 'tradingle' ); ?></p>
 					<a class="button button-primary" href="#newsletter-signup"><?php esc_html_e( 'Subscribe', 'tradingle' ); ?></a>
 				</section>
+
+				<?php get_template_part( 'template-parts/content/post', 'collections' ); ?>
 			</div>
 
 			<aside class="article-side-rail" aria-label="<?php esc_attr_e( 'Article Utilities', 'tradingle' ); ?>">
@@ -127,8 +169,11 @@ get_header();
 					<section class="rail-card rail-card--share">
 						<h3><?php esc_html_e( 'Share', 'tradingle' ); ?></h3>
 						<div class="share-links">
-							<a href="https://twitter.com/intent/tweet?url=<?php echo rawurlencode( get_permalink() ); ?>" target="_blank" rel="noopener noreferrer">X</a>
-							<a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo rawurlencode( get_permalink() ); ?>" target="_blank" rel="noopener noreferrer">in</a>
+							<a href="https://twitter.com/intent/tweet?url=<?php echo rawurlencode( get_permalink() ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'X', 'tradingle' ); ?></a>
+							<a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo rawurlencode( get_permalink() ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'LinkedIn', 'tradingle' ); ?></a>
+							<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo rawurlencode( get_permalink() ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Facebook', 'tradingle' ); ?></a>
+							<a href="https://wa.me/?text=<?php echo rawurlencode( get_the_title() . ' - ' . get_permalink() ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'WhatsApp', 'tradingle' ); ?></a>
+							<a href="mailto:?subject=<?php echo rawurlencode( get_the_title() ); ?>&amp;body=<?php echo rawurlencode( get_permalink() ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Email', 'tradingle' ); ?></a>
 						</div>
 					</section>
 					<section class="rail-card rail-card--trending">
@@ -151,6 +196,12 @@ get_header();
 							?>
 						</ul>
 					</section>
+
+					<?php if ( is_active_sidebar( 'article-sidebar' ) ) : ?>
+						<section class="rail-card rail-card--widget">
+							<?php dynamic_sidebar( 'article-sidebar' ); ?>
+						</section>
+					<?php endif; ?>
 				</div>
 			</aside>
 		</div>

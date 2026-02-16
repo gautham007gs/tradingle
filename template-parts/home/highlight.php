@@ -35,6 +35,7 @@ if ( ! $highlight->have_posts() ) {
 					</a>
 				</div>
 			</article>
+			<?php tradingle_seen_posts_add( get_the_ID() ); ?>
 		<?php endwhile; wp_reset_postdata(); ?>
 	</div>
 </section>
