@@ -29,7 +29,7 @@ if ( ! $side_posts->have_posts() ) {
 <section class="home-section section-hero">
 	<div class="container hero-layout">
 		<div class="hero-layout__featured">
-			<div class="hero-slider" data-autoplay="5000">
+			<div class="hero-slider" data-autoplay="2500" aria-live="polite">
 				<?php
 				$slide_index = 0;
 				while ( $featured->have_posts() ) :
@@ -38,7 +38,7 @@ if ( ! $side_posts->have_posts() ) {
 					$hero_slug     = ! empty( $hero_category[0] ) ? sanitize_html_class( $hero_category[0]->slug ) : 'default';
 					$hero_name     = ! empty( $hero_category[0] ) ? $hero_category[0]->name : '';
 					?>
-					<article <?php post_class( 'hero-slide hero-card card card--featured' . ( 0 === $slide_index ? ' is-active' : '' ) ); ?> data-slide-index="<?php echo esc_attr( $slide_index ); ?>">
+					<article <?php post_class( 'hero-slide hero-card card card--featured' . ( 0 === $slide_index ? ' is-active' : '' ) ); ?> data-slide-index="<?php echo esc_attr( $slide_index ); ?>" aria-hidden="<?php echo 0 === $slide_index ? 'false' : 'true'; ?>">
 						<a href="<?php the_permalink(); ?>" class="media-link" aria-label="<?php the_title_attribute(); ?>">
 							<?php the_post_thumbnail( 'tradingle-hero', array( 'loading' => 0 === $slide_index ? 'eager' : 'lazy' ) ); ?>
 						</a>
@@ -56,7 +56,7 @@ if ( ! $side_posts->have_posts() ) {
 				?>
 				<div class="hero-slider__dots" role="tablist" aria-label="<?php esc_attr_e( 'Featured stories', 'tradingle' ); ?>">
 					<?php for ( $i = 0; $i < $slide_index; $i++ ) : ?>
-						<button type="button" class="hero-slider__dot<?php echo 0 === $i ? ' is-active' : ''; ?>" data-slide-dot="<?php echo esc_attr( $i ); ?>" aria-label="<?php printf( esc_attr__( 'Go to slide %d', 'tradingle' ), $i + 1 ); ?>"></button>
+						<button type="button" class="hero-slider__dot<?php echo 0 === $i ? ' is-active' : ''; ?>" data-slide-dot="<?php echo esc_attr( $i ); ?>" aria-label="<?php printf( esc_attr__( 'Go to slide %d', 'tradingle' ), $i + 1 ); ?>" aria-selected="<?php echo 0 === $i ? 'true' : 'false'; ?>"></button>
 					<?php endfor; ?>
 				</div>
 			</div>

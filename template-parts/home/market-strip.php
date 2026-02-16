@@ -12,6 +12,15 @@ $market_posts = new WP_Query(
 	)
 );
 
+if ( ! $market_posts->have_posts() ) {
+	$market_posts = new WP_Query(
+		array(
+			'posts_per_page'      => 6,
+			'ignore_sticky_posts' => true,
+		)
+	);
+}
+
 if ( ! is_active_sidebar( 'market-strip' ) && ! $market_posts->have_posts() ) {
 	return;
 }

@@ -29,6 +29,7 @@
 			<div class="site-branding__text">
 				<?php if ( has_custom_logo() ) { the_custom_logo(); } ?>
 				<a class="site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
+				<span class="site-tagline"><?php esc_html_e( 'Market Intelligence', 'tradingle' ); ?></span>
 			</div>
 		</div>
 
@@ -42,12 +43,10 @@
 				)
 			);
 			?>
-			<a class="menu-subscribe button-primary" href="#newsletter-signup"><?php echo esc_html( get_theme_mod( 'tradingle_subscribe_text', __( 'Subscribe', 'tradingle' ) ) ); ?></a>
 		</nav>
 
 		<div class="header-actions">
 			<button class="icon-btn button search-btn" type="button" aria-label="<?php esc_attr_e( 'Open search', 'tradingle' ); ?>" aria-expanded="false">⌕</button>
-			<a class="subscribe-btn button-primary" href="#newsletter-signup"><?php echo esc_html( get_theme_mod( 'tradingle_subscribe_text', __( 'Subscribe', 'tradingle' ) ) ); ?></a>
 			<button class="menu-toggle button" type="button" aria-label="<?php esc_attr_e( 'Toggle menu', 'tradingle' ); ?>" aria-expanded="false">☰</button>
 		</div>
 	</div>

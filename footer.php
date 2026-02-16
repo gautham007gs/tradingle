@@ -18,8 +18,8 @@ $social_links = array(
 </main>
 <footer class="site-footer" itemscope itemtype="https://schema.org/WPFooter">
 	<div class="wrapper footer-top">
-		<div class="footer-brand">
-			<div class="footer-brand__identity">
+		<div class="footer-brand-row">
+			<div class="footer-brand">
 				<span class="footer-brand__logo" aria-hidden="true">
 					<?php if ( $footer_logo_id ) : ?>
 						<?php echo wp_get_attachment_image( $footer_logo_id, 'medium', false, array( 'class' => 'footer-brand__logo-img', 'loading' => 'lazy' ) ); ?>

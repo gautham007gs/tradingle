@@ -75,12 +75,36 @@
 
     const setActive = (index) => {
       slides.forEach((slide, i) => {
-        slide.classList.toggle('is-active', i === index);
+        const isActive = i === index;
+        slide.classList.toggle('is-active', isActive);
+        slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
       });
       dots.forEach((dot, i) => {
-        dot.classList.toggle('is-active', i === index);
+        const isActive = i === index;
+        dot.classList.toggle('is-active', isActive);
+        dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
       });
       current = index;
+    };
+
+    const goToNext = () => {
+      const next = (current + 1) % slides.length;
+      setActive(next);
+    };
+
+    const stopAutoplay = () => {
+      if (intervalId) {
+        window.clearInterval(intervalId);
+        intervalId = undefined;
+      }
+    };
+
+    const startAutoplay = () => {
+      if (intervalId || slides.length < 2 || prefersReducedMotion) {
+        return;
+      }
+      const delay = Number(heroSlider.dataset.autoplay || 5000);
+      intervalId = window.setInterval(goToNext, delay);
     };
 
     dots.forEach((dot) => {
@@ -89,25 +113,9 @@
       });
     });
 
-    if (slides.length > 1 && !prefersReducedMotion) {
-      const delay = Number(heroSlider.dataset.autoplay || 5000);
-      intervalId = window.setInterval(() => {
-        const next = (current + 1) % slides.length;
-        setActive(next);
-      }, delay);
+    startAutoplay();
 
-      heroSlider.addEventListener('mouseenter', () => {
-        if (intervalId) {
-          window.clearInterval(intervalId);
-        }
-      });
-
-      heroSlider.addEventListener('mouseleave', () => {
-        intervalId = window.setInterval(() => {
-          const next = (current + 1) % slides.length;
-          setActive(next);
-        }, delay);
-      });
-    }
+    heroSlider.addEventListener('mouseenter', stopAutoplay);
+    heroSlider.addEventListener('mouseleave', startAutoplay);
   }
 })();
