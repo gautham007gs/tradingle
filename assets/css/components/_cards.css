@@ -17,7 +17,7 @@
 .card__media img { width: 100%; height: 100%; object-fit: cover; }
 
 .card-body,
-.card__content { padding: clamp(16px, 2vw, 22px); }
+.card__content { padding: 18px; }
 .news-card h3,
 .card h3 { margin-bottom: var(--space-xs); }
 .news-card p:last-child,
@@ -57,19 +57,19 @@
 .card-overlay {
   position: absolute;
   inset: auto 0 0;
-  padding: clamp(20px, 3vw, 30px);
+  padding: 28px;
   color: #fff;
-  background: linear-gradient(180deg, rgba(6,16,27,0) 0%, rgba(6,16,27,.88) 58%);
+  background: linear-gradient(180deg, rgba(6,16,27,0) 0%, rgba(6,16,27,.9) 56%);
 }
 .card-overlay a { color: #fff; }
-.card-overlay h1 { margin-bottom: 10px; }
+.card-overlay h1 { margin-bottom: 10px; font-size: var(--fs-h1); }
 .card-overlay p { max-width: 60ch; color: rgba(255,255,255,.92); }
 
 .mini-list-card {
   display: grid;
-  grid-template-columns: 112px minmax(0, 1fr);
-  gap: var(--space-sm);
-  padding: var(--space-sm);
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 12px;
+  padding: 12px;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   background: var(--bg-white);
@@ -77,17 +77,20 @@
 }
 .mini-thumb { aspect-ratio: 1; border-radius: var(--radius-sm); overflow: hidden; }
 .mini-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.mini-content h3 { font-size: .98rem; line-height: 1.35; }
 
-.card--metric { padding: var(--space-sm); min-height: 108px; }
-.card--metric .label { color: var(--text-muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
-.card--metric strong { display: block; margin: 8px 0; font-size: .95rem; line-height: 1.4; }
-.card--metric .up { color: #169347; font-size: .8rem; }
-.card--metric .down { color: #b42318; font-size: .8rem; }
+.card--metric { padding: 14px; min-height: 84px; }
+.card--metric .label { color: var(--text-muted); font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; }
+.card--metric strong { display: block; margin: 6px 0; font-size: .9rem; line-height: 1.35; }
+.card--metric .up::before { content: '▲ '; color: #169347; }
+.card--metric .down::before { content: '▼ '; color: #b42318; }
+.card--metric .up,
+.card--metric .down { font-size: .78rem; }
 
 .card--featured-highlight {
   display: grid;
   grid-template-columns: 1.05fr .95fr;
-  gap: var(--space-md);
+  gap: var(--layout-gap);
   padding: var(--space-lg);
   border: 0;
   background: linear-gradient(130deg, #0c2137, #14385d);

@@ -1,4 +1,5 @@
 .ticker-inline {
+  min-height: 48px;
   background: #0f2740;
   border-radius: var(--radius-md);
   color: #dbe8f6;
@@ -13,6 +14,7 @@
   letter-spacing: .08em;
   text-transform: uppercase;
   color: #a4ffcb;
+  font-weight: 700;
 }
 .ticker-window { overflow: hidden; flex: 1; }
 .ticker-track {

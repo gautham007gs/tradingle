@@ -14,11 +14,11 @@ if ( ! $featured->have_posts() ) {
 	);
 }
 
-$side_posts = tradingle_category_query( 'editors-picks', 3 );
+$side_posts = tradingle_category_query( 'editors-picks', 4 );
 if ( ! $side_posts->have_posts() ) {
 	$side_posts = new WP_Query(
 		array(
-			'posts_per_page' => 3,
+			'posts_per_page' => 4,
 			'offset'         => 1,
 		)
 	);
