@@ -9,11 +9,13 @@
 
 .hero-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
   gap: var(--space-md);
+  align-items: stretch;
 }
 .hero-layout__stack {
   display: grid;
+  grid-template-rows: auto repeat(3, minmax(0, 1fr));
   gap: var(--space-sm);
 }
 
@@ -26,11 +28,23 @@
 .analyst-picks-grid,
 .podcast-grid,
 .tools-grid,
-.explore-grid {
+.explore-grid,
+.home-categories {
   display: grid;
   gap: var(--space-md);
 }
 .analyst-picks-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .explore-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .podcast-grid,
-.tools-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.tools-grid,
+.home-categories { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.module-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: var(--space-md);
+}
+.stack-list {
+  display: grid;
+  gap: var(--space-sm);
+}
