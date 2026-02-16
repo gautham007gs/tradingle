@@ -410,3 +410,29 @@ function tradingle_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'tradingle_pingback_header' );
+
+/**
+ * Handle newsletter subscribe form submissions.
+ */
+function tradingle_handle_newsletter_subscribe() {
+	if ( ! isset( $_POST['tradingle_newsletter_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['tradingle_newsletter_nonce'] ) ), 'tradingle_newsletter_subscribe' ) ) {
+		wp_safe_redirect( add_query_arg( 'newsletter', 'error', wp_get_referer() ?: home_url( '/' ) ) );
+		exit;
+	}
+
+	$email = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
+	if ( ! is_email( $email ) ) {
+		wp_safe_redirect( add_query_arg( 'newsletter', 'error', wp_get_referer() ?: home_url( '/' ) ) );
+		exit;
+	}
+
+	$subject = sprintf( __( 'New newsletter signup on %s', 'tradingle' ), get_bloginfo( 'name' ) );
+	$message = sprintf( __( 'A new user subscribed with email: %s', 'tradingle' ), $email );
+
+	wp_mail( get_option( 'admin_email' ), $subject, $message );
+
+	wp_safe_redirect( add_query_arg( 'newsletter', 'success', wp_get_referer() ?: home_url( '/' ) ) );
+	exit;
+}
+add_action( 'admin_post_nopriv_tradingle_newsletter_subscribe', 'tradingle_handle_newsletter_subscribe' );
+add_action( 'admin_post_tradingle_newsletter_subscribe', 'tradingle_handle_newsletter_subscribe' );

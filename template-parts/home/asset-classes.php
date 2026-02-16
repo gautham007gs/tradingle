@@ -5,15 +5,41 @@
  * @package Tradingle
  */
 
-$sections = array( 'stocks', 'crypto', 'economy' );
+$sections = array(
+	array(
+		'label' => __( 'Stocks', 'tradingle' ),
+		'slugs' => array( 'stocks', 'equities' ),
+	),
+	array(
+		'label' => __( 'Crypto', 'tradingle' ),
+		'slugs' => array( 'crypto' ),
+	),
+	array(
+		'label' => __( 'Economy', 'tradingle' ),
+		'slugs' => array( 'economy', 'macro-economy' ),
+	),
+);
 ?>
-<?php foreach ( $sections as $slug ) : ?>
+<?php foreach ( $sections as $section ) : ?>
 	<?php
-	$category = get_category_by_slug( $slug );
+	$category = null;
+	foreach ( $section['slugs'] as $slug ) {
+		$category = get_category_by_slug( $slug );
+		if ( $category ) {
+			break;
+		}
+	}
+
 	if ( ! $category ) {
 		continue;
 	}
-	$posts = tradingle_category_query( $slug, 4 );
+
+	$posts = new WP_Query(
+		array(
+			'cat'            => $category->term_id,
+			'posts_per_page' => 4,
+		)
+	);
 	if ( ! $posts->have_posts() ) {
 		continue;
 	}
@@ -21,7 +47,7 @@ $sections = array( 'stocks', 'crypto', 'economy' );
 	<section class="home-section section-asset-class">
 		<div class="container">
 			<div class="section-head">
-				<h2 class="heading-md"><?php echo esc_html( $category->name ); ?></h2>
+				<h2 class="heading-md"><?php echo esc_html( $section['label'] ); ?></h2>
 				<a href="<?php echo esc_url( get_category_link( $category->term_id ) ); ?>"><?php esc_html_e( 'View all →', 'tradingle' ); ?></a>
 			</div>
 			<div class="cards-grid cards-grid-4">

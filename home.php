@@ -14,6 +14,7 @@ get_template_part( 'template-parts/home/latest' );
 get_template_part( 'template-parts/home/highlight' );
 get_template_part( 'template-parts/home/asset-classes' );
 get_template_part( 'template-parts/home/editors-picks' );
+get_template_part( 'template-parts/home/trending' );
 get_template_part( 'template-parts/home/data-visual' );
 get_template_part( 'template-parts/home/newsletter' );
 

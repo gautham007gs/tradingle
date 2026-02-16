@@ -2,7 +2,7 @@
   border-radius: var(--radius-lg);
   background: linear-gradient(140deg, #0d243a, #18456e);
   color: #f4f8fc;
-  padding: var(--space-xl);
+  padding: 80px clamp(20px, 4vw, 48px);
   text-align: center;
 }
 .newsletter-wrap h2,
@@ -10,9 +10,24 @@
 .newsletter-wrap .meta { color: #f4f8fc; }
 .newsletter-form {
   margin: var(--space-md) auto var(--space-sm);
-  max-width: 720px;
+  max-width: 760px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: var(--space-sm);
 }
 .newsletter-form input { min-height: 48px; background: rgba(255,255,255,.96); }
+.newsletter-status {
+  margin: 0 auto var(--space-sm);
+  max-width: 760px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: .92rem;
+}
+.newsletter-status--success {
+  background: rgba(29,185,84,.22);
+  color: #dbffe9;
+}
+.newsletter-status--error {
+  background: rgba(220,38,38,.22);
+  color: #ffe7e7;
+}
