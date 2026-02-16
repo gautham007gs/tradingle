@@ -1,7 +1,8 @@
 .news-card,
 .card {
   overflow: hidden;
-  transition: transform .28s ease, box-shadow .28s ease;
+  transition: transform .28s cubic-bezier(.22,.61,.36,1), box-shadow .28s cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
 }
 .news-card:hover,
 .card:hover,
@@ -32,18 +33,28 @@
   font-size: .68rem;
   letter-spacing: .08em;
   text-transform: uppercase;
-  background: rgba(29,185,84,.14);
-  color: #0f7d39;
   margin-bottom: var(--space-xs);
   font-weight: 700;
+  background: rgba(15, 118, 110, .12);
+  color: #0f766e;
 }
-.category-pill--stocks { background: rgba(36, 99, 235, .16); color: #1d4ed8; }
-.category-pill--crypto { background: rgba(147, 51, 234, .16); color: #7e22ce; }
-.category-pill--markets { background: rgba(15, 118, 110, .16); color: #0f766e; }
-.category-pill--analysis { background: rgba(202, 138, 4, .2); color: #a16207; }
+/* Color psychology: distinct but calm hues for quick category recognition. */
+.category-pill--markets,
+.category-pill--equities,
+.category-pill--stocks { background: rgba(37, 99, 235, .14); color: #1d4ed8; }
+.category-pill--crypto { background: rgba(124, 58, 237, .14); color: #6d28d9; }
 .category-pill--economy,
-.category-pill--macro-economy { background: rgba(220, 38, 38, .14); color: #b91c1c; }
-.category-pill--default { background: rgba(29,185,84,.14); color: #0f7d39; }
+.category-pill--macro-economy,
+.category-pill--policy { background: rgba(202, 138, 4, .18); color: #a16207; }
+.category-pill--analysis,
+.category-pill--research { background: rgba(14, 116, 144, .16); color: #0e7490; }
+.category-pill--personal-finance { background: rgba(234, 88, 12, .14); color: #c2410c; }
+.category-pill--opinion { background: rgba(190, 24, 93, .13); color: #be185d; }
+.category-pill--commodities,
+.category-pill--forex,
+.category-pill--bonds { background: rgba(5, 150, 105, .15); color: #047857; }
+.category-pill--technology { background: rgba(99, 102, 241, .15); color: #4f46e5; }
+.category-pill--default { background: rgba(15, 118, 110, .12); color: #0f766e; }
 .badge--accent { background: rgba(255,255,255,.15); color: #dff3e7; }
 
 .hero-card {
@@ -64,6 +75,7 @@
 .card-overlay a { color: #fff; }
 .card-overlay h1 { margin-bottom: 10px; font-size: var(--fs-h1); }
 .card-overlay p { max-width: 60ch; color: rgba(255,255,255,.92); }
+.card-overlay .meta { color: rgba(255,255,255,.78); }
 
 .mini-list-card {
   display: grid;

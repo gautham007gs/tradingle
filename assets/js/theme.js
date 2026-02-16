@@ -64,4 +64,50 @@
       tocRoot.closest('.rail-card')?.setAttribute('hidden', 'hidden');
     }
   }
+
+  const heroSlider = document.querySelector('.hero-slider');
+  if (heroSlider) {
+    const slides = Array.from(heroSlider.querySelectorAll('.hero-slide'));
+    const dots = Array.from(heroSlider.querySelectorAll('[data-slide-dot]'));
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let current = 0;
+    let intervalId;
+
+    const setActive = (index) => {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('is-active', i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === index);
+      });
+      current = index;
+    };
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        setActive(Number(dot.dataset.slideDot || 0));
+      });
+    });
+
+    if (slides.length > 1 && !prefersReducedMotion) {
+      const delay = Number(heroSlider.dataset.autoplay || 5000);
+      intervalId = window.setInterval(() => {
+        const next = (current + 1) % slides.length;
+        setActive(next);
+      }, delay);
+
+      heroSlider.addEventListener('mouseenter', () => {
+        if (intervalId) {
+          window.clearInterval(intervalId);
+        }
+      });
+
+      heroSlider.addEventListener('mouseleave', () => {
+        intervalId = window.setInterval(() => {
+          const next = (current + 1) % slides.length;
+          setActive(next);
+        }, delay);
+      });
+    }
+  }
 })();

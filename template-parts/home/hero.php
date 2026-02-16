@@ -1,25 +1,27 @@
 <?php
 /**
- * Homepage hero section.
+ * Homepage hero section with featured slider.
  *
  * @package Tradingle
  */
 
-$featured = tradingle_category_query( 'featured', 1 );
+$featured = tradingle_category_query( 'featured', 5 );
 if ( ! $featured->have_posts() ) {
 	$featured = new WP_Query(
 		array(
-			'posts_per_page' => 1,
+			'posts_per_page' => 5,
 		)
 	);
 }
+
+$featured_ids = wp_list_pluck( $featured->posts, 'ID' );
 
 $side_posts = tradingle_category_query( 'editors-picks', 4 );
 if ( ! $side_posts->have_posts() ) {
 	$side_posts = new WP_Query(
 		array(
 			'posts_per_page' => 4,
-			'offset'         => 1,
+			'post__not_in'   => $featured_ids,
 		)
 	);
 }
@@ -27,9 +29,37 @@ if ( ! $side_posts->have_posts() ) {
 <section class="home-section section-hero">
 	<div class="container hero-layout">
 		<div class="hero-layout__featured">
-			<?php if ( $featured->have_posts() ) : $featured->the_post(); ?>
-				<?php get_template_part( 'template-parts/content/card', 'hero' ); ?>
-			<?php endif; wp_reset_postdata(); ?>
+			<div class="hero-slider" data-autoplay="5000">
+				<?php
+				$slide_index = 0;
+				while ( $featured->have_posts() ) :
+					$featured->the_post();
+					$hero_category = get_the_category();
+					$hero_slug     = ! empty( $hero_category[0] ) ? sanitize_html_class( $hero_category[0]->slug ) : 'default';
+					$hero_name     = ! empty( $hero_category[0] ) ? $hero_category[0]->name : '';
+					?>
+					<article <?php post_class( 'hero-slide hero-card card card--featured' . ( 0 === $slide_index ? ' is-active' : '' ) ); ?> data-slide-index="<?php echo esc_attr( $slide_index ); ?>">
+						<a href="<?php the_permalink(); ?>" class="media-link" aria-label="<?php the_title_attribute(); ?>">
+							<?php the_post_thumbnail( 'tradingle-hero', array( 'loading' => 0 === $slide_index ? 'eager' : 'lazy' ) ); ?>
+						</a>
+						<div class="card-overlay">
+							<span class="category-pill category-pill--<?php echo esc_attr( $hero_slug ); ?>"><?php echo esc_html( $hero_name ); ?></span>
+							<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+							<p><?php echo esc_html( wp_trim_words( get_the_excerpt(), 24 ) ); ?></p>
+							<p class="meta"><?php the_author(); ?> · <?php echo esc_html( get_the_date( 'M j, Y' ) ); ?></p>
+						</div>
+					</article>
+					<?php
+					$slide_index++;
+				endwhile;
+				wp_reset_postdata();
+				?>
+				<div class="hero-slider__dots" role="tablist" aria-label="<?php esc_attr_e( 'Featured stories', 'tradingle' ); ?>">
+					<?php for ( $i = 0; $i < $slide_index; $i++ ) : ?>
+						<button type="button" class="hero-slider__dot<?php echo 0 === $i ? ' is-active' : ''; ?>" data-slide-dot="<?php echo esc_attr( $i ); ?>" aria-label="<?php printf( esc_attr__( 'Go to slide %d', 'tradingle' ), $i + 1 ); ?>"></button>
+					<?php endfor; ?>
+				</div>
+			</div>
 		</div>
 		<div class="hero-layout__stack">
 			<div class="section-head section-head--compact">
