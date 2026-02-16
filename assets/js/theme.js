@@ -36,4 +36,32 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  const tocRoot = document.querySelector('#article-toc');
+  const articleBody = document.querySelector('.article-body');
+  if (tocRoot && articleBody) {
+    const headings = articleBody.querySelectorAll('h2, h3');
+    if (headings.length) {
+      const list = document.createElement('div');
+      headings.forEach((heading, index) => {
+        if (!heading.id) {
+          heading.id = `section-${index + 1}`;
+        }
+
+        const link = document.createElement('a');
+        link.href = `#${heading.id}`;
+        link.textContent = heading.textContent;
+        if (heading.tagName.toLowerCase() === 'h3') {
+          link.style.paddingLeft = '10px';
+          link.style.fontSize = '0.86rem';
+        }
+
+        list.appendChild(link);
+      });
+
+      tocRoot.appendChild(list);
+    } else {
+      tocRoot.closest('.rail-card')?.setAttribute('hidden', 'hidden');
+    }
+  }
 })();
